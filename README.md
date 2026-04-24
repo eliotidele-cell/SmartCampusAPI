@@ -103,3 +103,48 @@ A logging filter is used to log incoming requests and outgoing responses.
 ## Conclusion
 
 This API demonstrates a complete RESTful backend with CRUD operations, relationships, validation, and error handling.
+
+## Coursework Questions
+
+### 1. Why use 422 instead of 404?
+
+A 422 Unprocessable Entity is used when the request is valid but contains incorrect data.  
+For example, when creating a sensor with a roomId that does not exist, the request format is correct, but the data is invalid.
+
+A 404 Not Found is used when the requested resource itself does not exist.  
+Therefore, 422 is more appropriate for validation errors.
+
+---
+
+### 2. Why should stack traces not be exposed?
+
+Stack traces contain sensitive internal information such as class names, file paths, and system structure.  
+Exposing this information can create security risks, as attackers can use it to understand the system and exploit vulnerabilities.
+
+Therefore, APIs should return clean, structured error messages instead.
+
+---
+
+### 3. Why use filters for logging?
+
+Filters allow logging to be handled in one central place rather than repeating logging code in every resource method.  
+This improves code organisation, reduces duplication, and makes the system easier to maintain.
+
+---
+
+### 4. How does the API follow REST principles?
+
+The API follows REST principles by:
+- Using resource-based endpoints such as /rooms and /sensors  
+- Using standard HTTP methods like GET, POST, and DELETE  
+- Returning JSON responses  
+- Using proper HTTP status codes for success and errors  
+
+---
+
+### 5. What are nested resources and why are they used?
+
+Nested resources are used to represent relationships between entities.  
+For example, sensor readings are accessed using /sensors/{id}/readings.
+
+This structure clearly shows that readings belong to a specific sensor and improves API organisation.
